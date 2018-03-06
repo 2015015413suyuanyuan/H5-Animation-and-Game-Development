@@ -1,0 +1,45 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>canvas 案例</title>
+    <script>
+        //window.addEventListener('load',eventWindowLoaded,false);JS事件流
+        //function eventWindowLoaded(){
+        //    canvasApp();
+        //}
+        window.onload=function(){
+            canvasApp();
+        }
+        function canvasApp(){
+            var theCanvas = document.getElementById('canvas');
+            var context = theCanvas.getContext('2d');
+
+            console.log("构造函数：" + context.constructor);
+            console.log(context instanceof CanvasRenderingContext2D);
+            console.log(CanvasRenderingContext2D.prototype == context);//引用类型，内容虽然相同，但false
+            console.log(CanvasRenderingContext2D.prototype == context.__proto__);
+         //如何为它添加原型方法，拓展自己的库？
+         CanvasRenderingContext2D.prototype.triangle=function(){
+             console.log('三角形');
+         }
+         context.triangle();
+         for (const key in context) {
+                const element = context[key];
+                if (context.hasOwnProperty(key)) {
+                    console.log("Own:", element);
+                } else {
+                    console.log("UnOwn:", element);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+   <div>
+       <canvas id='canvas' width="500" height="500" style="border:2px solid #ccc">
+            your browser does not support the html 5 canvas.
+       </canvas>
+   </div> 
+</body>
+</html>
