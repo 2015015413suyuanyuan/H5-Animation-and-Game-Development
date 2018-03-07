@@ -1,0 +1,69 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>canvas 案例</title>
+    <script>
+        //window.addEventListener('load',eventWindowLoaded,false);JS事件流
+        //function eventWindowLoaded(){
+        //    canvasApp();
+        //}
+        window.onload=function(){
+            canvasApp();
+        }
+        function canvasApp(){
+            var theCanvas = document.getElementById('canvas');
+            var context = theCanvas.getContext('2d');
+            drawRect(context);
+            drawEllipse(context);
+            drawTriangle(context);
+        }
+
+        //画矩形
+        function drawRect(ctx){
+          ctx.fillStyle='yellow';
+          ctx.strokeStyle='red';
+          ctx.lineWidth=5;
+          ctx.beginPath();
+          ctx.rect(200,0,80,120);
+          ctx.stroke();
+
+          ctx.strokeStyle='blue';
+          ctx.fillRect(320,20,80,80);
+          ctx.strokeRect(0+300,0,120,120);
+          ctx.clearRect(40+300,40,40,32);
+        }
+        
+        //画椭圆
+        function drawEllipse(ctx){
+          ctx.save();
+          ctx.strokeStyle='red';
+          ctx.lineWidth=10;
+          ctx.beginPath();
+          //参数：x椭圆圆心坐标  y椭圆圆心坐标 radiusX椭圆长轴半径 radiusY椭圆短轴半径 rotation 椭圆的uanzhuan角度，以弧度表示（非角度度数） startAngle:将要绘制的起始点角度，从X周测量，以弧度表示 endAngle：椭圆将要绘制的结束点角度，以弧度表示（非角度度数） anticlockwise：true 逆时针绘制 反之顺时针
+          ctx.ellipse(100,100,50,75,0,Math.PI/2,2*Math.PI,false);
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        function drawTriangle(ctx){
+          ctx.triangle(10,210,100,20,10,300)
+        }
+
+        CanvasRenderingContext2D.prototype.triangle=function(x1,y1,x2,y2,x3,y3){
+          this.moveTo(x1,y1);
+          this.lineTo(x2,y3);
+          this.lineTo(x3,y3);
+          this.closePath();
+          this.stroke();
+        }
+    </script>
+</head>
+<body>
+   <div>
+       <canvas id='canvas' width="500" height="500" style="border:2px solid #ccc">
+            your browser does not support the html 5 canvas.
+       </canvas>
+   </div> 
+</body>
+</html>
