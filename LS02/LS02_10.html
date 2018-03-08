@@ -2,17 +2,32 @@
 <html>
 <head>
     <meta charset='utf-8'>
-    <title>canvas 案例</title>
+    <title>canvas上合成图片</title>
+<!-- globalCompositeOperation属性设置或返回将一个新的图像绘制到已有的图像上
+    js语法：context.globalCompositeOperation = 'source-in';
+    source-over在已有图像上显示新图像
+    source-atop在已有图像顶部显示新图像，新图像位于已有图像之外的部分是不可见的
+    source-in在已有图像中显示新图像，只有已有图像内的新图像才会显示，已有图像是透明的 -->
+
     <script>
-        //window.addEventListener('load',eventWindowLoaded,false);JS事件流
-        //function eventWindowLoaded(){
-        //    canvasApp();
-        //}
+ 
         window.onload=function(){
             canvasApp();
         }
         function canvasApp(){
+          var theCanvas = document.getElementById('canvas');
+          var context = theCanvas.getContext('2d');
+          context.fillStyle='black';
+          context.fillRect(10,10,200,200);
 
+          context.fillStyle='red';
+          context.fillRect(1,1,50,50);
+
+          context.globalCompositeOperation='source-in';
+         // context.fillStyle='yellow';
+          context.fillRect(60,1,10,10);
+          //context.globalCompositeOperation='source-out';
+         
         }
     </script>
 </head>
@@ -23,4 +38,5 @@
        </canvas>
    </div> 
 </body>
+
 </html>

@@ -3,16 +3,39 @@
 <head>
     <meta charset='utf-8'>
     <title>canvas 案例</title>
+<!--     
+    save和restore方法必须是配对使用的，restore方法前必须有save方法，不然会报Underflow in restore错误。但是也可以只有save方法，不过只有save方法我觉得其实是无意义的。
+    save方法用于临时保存画布坐标系统的状态,restore方法可以用来恢复save之后设置的状态,
+    可以简单理解为调用restore之后，restore方法前调用的rotate/translate/scale方法全部就还原了，画布的坐标系统恢复到save方法之前，但是这里要注意的是，restore方法的调用只影响restore之后绘制的内容，对restore之前已经绘制到屏幕上的图形不会产生任何影响。
+ -->
     <script>
-        //window.addEventListener('load',eventWindowLoaded,false);JS事件流
-        //function eventWindowLoaded(){
-        //    canvasApp();
-        //}
         window.onload=function(){
             canvasApp();
         }
         function canvasApp(){
+            var theCanvas = document.getElementById('canvas');
+            var context = theCanvas.getContext('2d');
+            context.save();
+            context.fillStyle='green';
+            context.translate(50,50);
+            context.fillRect(0,0,50,50);
+            context.restore();
 
+            context.save();
+
+            var angleInRadians = 5 *Math.PI /180;
+           context.rotate(angleInRadians);
+
+            context.fillStyle='red';
+            context.fillRect(100,100,50,50);
+            context.restore();
+
+            context.save();
+
+            //context.scale(0.5,1);
+            context.fillStyle='yellow';
+            context.fillRect(150,150,50,50);
+            context.restore();
         }
     </script>
 </head>
