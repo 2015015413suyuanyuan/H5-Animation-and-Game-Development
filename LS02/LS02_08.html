@@ -2,24 +2,61 @@
 <html>
 <head>
     <meta charset='utf-8'>
-    <title>canvas 案例</title>
+    <title>填充 createPattern</title>
     <script>
-        //window.addEventListener('load',eventWindowLoaded,false);JS事件流
-        //function eventWindowLoaded(){
-        //    canvasApp();
-        //}
+            //createPattern()用于在指定的方向内重复指定的元素。元素可以是图片、视频、或者其他<canvas>元素  被重复的元素可用于绘制/填充矩形、圆形或线条等等。
+            //repeat repeat-x repeat-y no-repeat
+
+
         window.onload=function(){
             canvasApp();
         }
         function canvasApp(){
+          var theCanvas = document.getElementById('canvas');
+          var context = theCanvas.getContext('2d');
+          drawScreenTwo();
+          //drawScreenOne();
+          
+          function drawScreenOne(){
+            var fillImg = new Image();
+            fillImg.src='./images/fill_20x20.gif';
+
+            fillImg.onload=function(){
+              var fillPatter = context.createPattern(fillImg,'repeat-x');
+              context.fillStyle=fillPatter;
+              context.fillRect(0,0,300,300);
+
+            }
+          }
+
+          function drawScreenTwo(){
+            var offScreenCanvas = document.getElementById('canvasOffScreen');
+            var offScreenContext = offScreenCanvas.getContext('2d');
+            offScreenContext.fillStyle='blue';
+            offScreenContext.strokeStyle='red';
+            offScreenContext.beginPath();
+            offScreenContext.arc(25,25,10,Math.PI/180*0,Math.PI/180*145,false);
+            offScreenContext.fill();
+            offScreenContext.stroke();
+            // offScreenContext.closePath();
+            document.onclick=function(){
+              var fillPatter = context.createPattern(offScreenCanvas,'repeat');
+              context.fillStyle=fillPatter;
+              context.fillRect(0,0,500,300);
+            }
+          }
+
 
         }
     </script>
 </head>
 <body>
    <div>
-       <canvas id='canvas' width="500" height="500" style="border:2px solid #ccc">
+       <canvas id='canvas' width="500" height="300" style="border:2px solid #ccc">
             your browser does not support the html 5 canvas.
+       </canvas>
+       <canvas id='canvasOffScreen' width='50' height='50' style='border:2px solid red'>
+         
        </canvas>
    </div> 
 </body>
