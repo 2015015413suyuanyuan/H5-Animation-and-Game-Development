@@ -4,16 +4,26 @@
     <meta charset='utf-8'>
     <title>canvas 案例</title>
     <script>
-        //window.addEventListener('load',eventWindowLoaded,false);JS事件流
-        //function eventWindowLoaded(){
-        //    canvasApp();
-        //}
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
         window.onload=function(){
-            canvasApp();
-        }
-        function canvasApp(){
+            canvas.width=600;
+            canvas.height=600;
+            var imageData=context.createImageData(canvas.width,canvas.height);
+            var pixelData=imageData.data;
 
+            for(var i=0;i<canvas.height;i++){
+              for(var j=0;j<canvas.width;j++){
+                var p = i*canvas.width +j;
+                pixelData[0]=12;
+                pixelData[1]=12;
+                pixelData[2]=33;
+                pixelData[3]=44;
+              }
+            }
+            context.putImageData(imageData,0,0,0,0,canvas.width,canvas.height);
         }
+       
     </script>
 </head>
 <body>
