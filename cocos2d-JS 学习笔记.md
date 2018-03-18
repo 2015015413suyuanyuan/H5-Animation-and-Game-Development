@@ -18,6 +18,18 @@
 * src （源代码）
 * inde.html main.js （程序入口）
 * project.json （配置文件）
-    >**debugMode** showFPS frameRate rendMode engineDir **modules jsList**
-    
- ![工程启动及加载流程图](http://m.qpic.cn/psb?/V12SqnDn3ERdXU/Xtdy.lDmDWggwHUpyslOY3GS6oqh3JAjQQ5qRdCjys4!/b/dAgBAAAAAAAA&bo=3wERAQAAAAARB*4!&rf=viewer_4)
+    >**debugMode** showFPS frameRate rendMode engineDir **modules jsList**
+### cocos2d-JS游戏启动流程
+* 工程启动及加载流程  
+         1. index.html 加载  
+         2. project.json 获取  
+         3. CCBoot.js  预加载  
+         4. main.js运行  
+         5. 各种资源  
+         6. 运行游戏 app.js  
+### 工程文件综述
+* index.html（调取CCBoot.js获取project.json配置信息）
+* project.json工程配置文件
+        > 调试模式、是否显示帧率、默认帧率设置、渲染模式
+        >引擎模块、脚本索引列表
+* 
