@@ -32,7 +32,7 @@
 * project.json工程配置文件  
      >   调试模式、是否显示帧率、默认帧率设置、渲染模式  
      >   引擎模块、脚本索引列表  
-     >    resource.js资源索引  
-     >    程序入口文件main.js  
-     >     程序场景案例app.js  
+     >   resource.js资源索引  
+     >   程序入口文件main.js  
+     >   程序场景案例app.js  
      
