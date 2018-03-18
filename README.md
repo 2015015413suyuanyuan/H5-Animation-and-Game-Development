@@ -1,7 +1,3 @@
-# course-H5-Animation-and-Game-Development
-
-用于记录H5游戏引擎课程的学习
-
 # Cocos2d-JS游戏开发
 
 ## 第一节 引擎简介及环境搭建 
